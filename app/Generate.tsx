@@ -1,6 +1,7 @@
 'use client'
 import React, {use, useEffect, useState} from "react";
 import { setInterval } from "timers";
+import '../styles/globals.css'
 
 let nonce = generateRandomID(32)
 function generateRandomID(length : Number) : String {
@@ -72,7 +73,7 @@ export default function Generate() {
 
     return ( 
         <>
-        <div>Address: {userId} Gold: {gold} Wood: {wood} </div>
+        <div className=" underline border-lime-300">Address: {userId} Gold: {gold} Wood: {wood} </div><br />
         <button onClick={async () => {setUserId(
                 `${await getToken('/api/GenerateToken', {"nonce": generateRandomID(32), "signature": "temps", "address": "temp"})
                 .then(async (o) => {

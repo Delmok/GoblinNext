@@ -1,4 +1,4 @@
-import client from '../pages/api/DB';
+import '../styles/globals.css'
 
 export default function RootLayout({
     children,
