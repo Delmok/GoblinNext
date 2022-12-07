@@ -14,6 +14,7 @@
     "@types/react-dom": "18.0.8",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
+    "jsonwebtoken": "^8.5.1",
     "next": "13.0.3",
     "pg": "^8.8.0",
     "pg-promise": "^10.12.1",
