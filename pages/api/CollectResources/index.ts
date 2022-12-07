@@ -45,6 +45,7 @@ export default async function handler(
     let stonePerMili = (baseJobRate / resources.stone) / 600000;
     let woodToCollect = timeDif * woodPerMili;
     let stoneToCollect = timeDif * stonePerMili;
+    
     console.log(eggsToCollect.toFixed(4), woodToCollect.toFixed(4), stoneToCollect.toFixed(4));
     
     return res.status(200).json(user);

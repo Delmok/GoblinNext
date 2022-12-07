@@ -1,7 +1,6 @@
 'use client'
 import React, {use, useEffect, useState} from "react";
 import { setInterval } from "timers";
-import '../styles/globals.css'
 
 let nonce = generateRandomID(32)
 function generateRandomID(length : Number) : String {
@@ -33,23 +32,25 @@ export default function Generate() {
             });
         });
 
-        setInterval(async () => {
+        // setInterval(async () => {
 
-            await getToken('/api/CollectResources', {"nonce": nonce})
-            .then((o) => {
+        //     await getToken('/api/CollectResources', {"nonce": nonce})
+        //     .then((o) => {
 
-                if (!o) return;
-                setUserId(o.address)
-                setGold(Number(o.gold))
-                setWood(Number(o.gold))
-            })
-        }, 5000);
+        //         if (!o) return;
+        //         setUserId(o.address)
+        //         setGold(Number(o.gold))
+        //         setWood(Number(o.gold))
+        //     })
+        // }, 5000);
     }, []);
 
     const [userId, setUserId] = useState('cwinge');
     const [gold, setGold] = useState(0);
     const [wood, setWood] = useState(0);
 
+
+    
     const getToken = async (url = '', data = {}) => {
 
         const response = await fetch(url, {
@@ -69,11 +70,9 @@ export default function Generate() {
         return response.json();
     }
 
-
-
     return ( 
         <>
-        <div className=" underline border-lime-300">Address: {userId} Gold: {gold} Wood: {wood} </div><br />
+        <div>Address: {userId} Gold: {gold} Wood: {wood} </div><br />
         <button onClick={async () => {setUserId(
                 `${await getToken('/api/GenerateToken', {"nonce": generateRandomID(32), "signature": "temps", "address": "temp"})
                 .then(async (o) => {
@@ -81,6 +80,8 @@ export default function Generate() {
                 })}`
                 )}
         }>click me</button><br />
+        <button onClick={async () => setWood(wood+1)}>resources</button>
+        <button onClick={async () => setWood(wood+1)}>resources</button>
         <button onClick={async () => setWood(wood+1)}>resources</button>
         </>
     )
